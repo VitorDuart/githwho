@@ -1,0 +1,66 @@
+.container-repositories{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.container-repository{
+    width: 110px;
+    height: 100px;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid rgb(146, 146, 146);
+    border-radius: 3px;
+
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    padding: 5px 5px;
+}
+
+a{
+    color: black;   
+}
+
+a:link, a:visited {
+    color: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:link:active, a:visited:active {
+    color: none;
+}
+
+.h3-repositories{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.h3-name-repository{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+
+    margin: 0;
+}
+
+.container-language{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: flex-end;
+}
+
+.container-img{
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.img-circulo{
+    width: 10px;
+    height: 10px;
+}
+

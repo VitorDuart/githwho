@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="sobre.css">
+    <link rel="stylesheet" href="repository.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-main">
+        <div class="container-logo">
+            <img class="img-logo" src="images/giphy.gif" 
+                alt="Logo GitHub">
+            <h3 class="h3-titulo">GitWho</h3>
+        </div>
+        
+        <input id="input" class="input-name" type="text" 
+            placeholder="User loginho in GitHub">
+        <input class="button" type="submit" value="GitSearch" 
+            onclick="request()">
+    </div>
+
+    <div id="userGit" class="container-who">
+        <div id="about" class="container-about">
+            <img id="avatar" class="img-perfil" alt="perfil">
+            <div id="people"class="container-sobre">
+                <h3 id="name" class="h3-name"></h3>
+                <h4 id="login" class="h4-login"></h4>
+            </div>
+            
+        </div>
+        <h3 class="h3-repositories">Repositories</h3>
+        <div id="repos" class="container-repositories">
+            
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    
+</body>
+</html>

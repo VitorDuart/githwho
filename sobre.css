@@ -1,0 +1,40 @@
+.container-who{
+    display: none;
+
+    width: 50%;
+
+    margin: auto;
+
+}
+
+.container-about{
+    display: flex;
+}
+
+.container-sobre{
+    display: flex;
+    flex-direction: column;
+    
+    margin-left: 10px;
+}
+
+.img-perfil{
+    width: 272px;
+    height: 272px;
+}
+
+
+.h3-name{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 26px;
+
+    margin: 0;   
+}
+
+.h4-login{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    color: #6f6f6f;
+
+    margin-top: 5px;
+}
