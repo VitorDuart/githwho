@@ -1,7 +1,10 @@
 .container-repositories{
+    height: 250px;
+
     display: flex;
     flex-wrap: wrap;
 
+    overflow-y: auto;
 }
 .container-repository{
     width: 110px;

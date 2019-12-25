@@ -23,21 +23,25 @@ function request(){
     }
 
     var username = document.getElementById('input').value;
+
+    var userContainer = document.getElementById("userGit");
+    userContainer.style.display="none";
     
-    clearRepository();
+    clearChildren(document.getElementById("repos"));
+    clearChildren(document.getElementById("followers"));
+    document.getElementById("followers").style.display="none";
 
     httpRequest.onreadystatechange = preencheSobre;
     httpRequest.open('GET', url+'/users/'+username);
     httpRequest.send();
+
+    
+
 }
 
-function clearRepository(){
-    var userContainer = document.getElementById("userGit");
-    userContainer.style.display="none";
-
-    var repos = document.getElementById("repos");
-    while (repos.firstChild) {
-        repos.removeChild(repos.firstChild);
+function clearChildren(node){
+    while (node.firstChild) {
+        node.removeChild(node.firstChild);
     }
 }
 
@@ -60,6 +64,11 @@ function preencheSobre(){
 
             userContainer.style.display = "block";
 
+            document.getElementById("escondido").value=response.followers_url;
+
+            document.getElementById("countFollower").textContent=response.followers;
+            document.getElementById("countFollower").style.display="inline";
+            
             //Get repositories of the user
             httpRequest.onreadystatechange = preencheRepositorio;
             httpRequest.open('GET', response.repos_url);
@@ -95,7 +104,7 @@ function preencheRepositorio(){
 
                 var divLanguage = document.createElement("div");
                 divLanguage.className="container-language";
-;
+
 
                 var span = document.createElement("span");
                 span.textContent=response[i].language;
@@ -125,37 +134,46 @@ function preencheRepositorio(){
     }
 }
 
+
+function requestFollowers(){
+    if (!httpRequest) {
+        alert('Giving up :( Cannot create an XMLHTTP instance');
+        return false;
+    }
+
+    clearChildren(document.getElementById("followers"));
+
+    httpRequest.onreadystatechange = preencheFollowers;
+    httpRequest.open('GET', document.getElementById("escondido").value);
+    httpRequest.send();
+    
+}
+
+
 function preencheFollowers(){
     if (httpRequest.readyState === 4) {
         if (httpRequest.status === 200) {
-            var sobre = document.getElementById("people");
-            var followers = document.createElement("h4");
+            var followers = document.getElementById("followers");
 
-            followers.style.fontFamily="'Ubuntu', sans-serif";
-            followers.style.fontSize="20px";
-            followers.color="#0366d6";
-            followers.textContent="Followers";
-            sobre.appendChild(followers);
 
             var response = JSON.parse(httpRequest.responseText);
             for(var i=0; i<response.length; i++){
                 var perfil = document.createElement("img");
-                perfil.style.width = "50px";
-                perfil.style.height = "50px";
-                perfil.marginRight = "20px";
-                perfil.style.borderRadius="3px";
+                perfil.className="img-follower";
                 perfil.src = response[i].avatar_url;
 
                 var login = document.createElement("span");
                 login.textContent = response[i].login;
 
                 var people = document.createElement("div");
-                people.style.display="flex";
+                people.className="container-follower";
                 people.appendChild(perfil);
                 people.appendChild(login);
 
-                sobre.appendChild(people);
+                followers.appendChild(people);
             }
+
+            followers.style.display="flex";
 
             
 
@@ -164,3 +182,4 @@ function preencheFollowers(){
     }
 
 }
+
